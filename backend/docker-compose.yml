@@ -1,0 +1,22 @@
+services:
+  caysfashion-db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}           
+      MYSQL_PASSWORD: ${DB_PASSWORD}   
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}  
+    ports:
+      - "3309:3306"
+    volumes:
+      - caysfashion_db_data:/var/lib/mysql
+    networks:
+      - caysfashion_network 
+
+networks:
+  caysfashion_network:
+    driver: bridge
+
+volumes:
+  caysfashion_db_data:
