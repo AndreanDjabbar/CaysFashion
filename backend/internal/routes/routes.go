@@ -10,6 +10,7 @@ func SetUpMainRoutes(router *gin.Engine) {
 	
 	route := router.Group("/caysfashion")
 	route.GET("/", handlers.MainRootHandler)
+	route.POST("/register", handlers.RegisterHandler)
 }
 
 // func SetUpSpecialRoutes(router *gin.Engine) {
