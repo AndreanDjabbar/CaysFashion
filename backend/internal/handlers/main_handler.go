@@ -2,13 +2,10 @@ package handlers
 
 import (
 	"net/http"
-
-	"github.com/AndreanDjabbar/CaysFashion/backend/database"
 	"github.com/AndreanDjabbar/CaysFashion/backend/pkg/logger"
 	"github.com/gin-gonic/gin"
 )
 
-var db = database.GetDB()
 var log = logger.SetUpLogger()
 
 func DefaultRootHandler(c *gin.Context) {
@@ -21,5 +18,11 @@ func DefaultRootHandler(c *gin.Context) {
 func MainRootHandler(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message": "Welcome to CaysFashion",
+	})
+}
+
+func HomeHandler(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": "Welcome to the home page",
 	})
 }
