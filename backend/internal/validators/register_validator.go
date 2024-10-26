@@ -8,30 +8,24 @@ import (
 	"github.com/AndreanDjabbar/CaysFashion/backend/internal/repositories"
 )
 
-func ValidateUserRegister(userRegister requests.UserRegister) map[string]string {
+func ValidateRegisterRequest(userRegister requests.RegisterRequest) map[string]string {
 	errors := make(map[string]string)
 
 	if strings.TrimSpace(userRegister.Username) == "" {
 		errors["username"] = "Username is required"
-	}
-
-	if (strings.TrimSpace(userRegister.Username) != "") && (len(userRegister.Username) < 6) {
+	} else if len(userRegister.Username) < 6 {
 		errors["username"] = "Username must be at least 6 characters long"
 	}
 
 	if strings.TrimSpace(userRegister.Email) == "" {
 		errors["email"] = "Email is required"
-	}
-
-	if (strings.TrimSpace(userRegister.Email) == "") && (!isValidEmail(userRegister.Email)) {
+	} else if !isValidEmail(userRegister.Email) {
 		errors["email"] = "Email must be a valid email address"
 	}
 
 	if strings.TrimSpace(userRegister.Password) == "" {
 		errors["password"] = "password is required"
-	}
-
-	if (strings.TrimSpace(userRegister.Password) == "") && (len(userRegister.Password) < 8) {
+	} else if len(userRegister.Password) < 8 {
 		errors["password"] = "Password must be at least 8 characters long"
 	}
 
@@ -47,6 +41,7 @@ func ValidateUserRegister(userRegister requests.UserRegister) map[string]string 
 }
 
 func isValidEmail(email string) bool {
-	re := regexp.MustCompile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$`)
+	const emailPattern = `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
+	re := regexp.MustCompile(emailPattern)
 	return re.MatchString(email)
 }
