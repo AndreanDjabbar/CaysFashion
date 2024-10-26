@@ -2,6 +2,7 @@ package config
 
 import (
 	"text/template"
+
 	"github.com/AndreanDjabbar/CaysFashion/backend/database"
 	"github.com/AndreanDjabbar/CaysFashion/backend/internal/routes"
 	"github.com/AndreanDjabbar/CaysFashion/backend/migrations"
@@ -11,6 +12,14 @@ import (
 )
 
 var log = logger.SetUpLogger()
+
+func EnvInit() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Error("Failed to load .env file", "error", err)
+		return
+	}
+}
 
 func DBInit() {
 	db := database.GetDB()
@@ -25,15 +34,4 @@ func RouteInit() *gin.Engine {
 	route.MaxMultipartMemory = 8 << 20
 	routes.SetUpMainRoutes(route)
 	return route
-}
-
-func EnvInit() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Error(
-			"Failed to load .env file",
-			"error", err,
-		)
-		return
-	}
 }

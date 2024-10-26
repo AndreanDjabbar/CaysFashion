@@ -8,9 +8,11 @@ import (
 	"github.com/AndreanDjabbar/CaysFashion/backend/pkg/logger"
 )
 
+
 func main() {
 	config.EnvInit()
 	config.DBInit()
+	
 	routes := config.RouteInit()
 	logger := logger.SetUpLogger()
 
