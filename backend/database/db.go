@@ -6,6 +6,7 @@ import (
 	"sync"
 
 	"github.com/AndreanDjabbar/CaysFashion/backend/pkg/logger"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -13,10 +14,17 @@ import (
 var (
     db   *gorm.DB
     once sync.Once
+    log = logger.SetUpLogger()
 )
 
 func GetDB() *gorm.DB {
-    logger := logger.SetUpLogger()
+    err := godotenv.Load()
+	if err != nil {
+		log.Error(
+			"Failed to load .env file",
+			"error", err,
+		)
+	}
 
     once.Do(func() {
         var err error
@@ -30,7 +38,7 @@ func GetDB() *gorm.DB {
         fmt.Println(dsn)
         db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
         if err != nil {
-            logger.Error(
+            log.Error(
                 "Failed to connect to database",
                 "error", err,
             )
