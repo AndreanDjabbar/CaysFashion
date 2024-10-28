@@ -24,7 +24,7 @@ export const LoginPage = () => {
                 titleForm="Login"
                 guide="Doesnt Have Account?"
                 guideType="Register"
-                guideLink="">
+                guideLink="/register">
                     <div className="login-form-input">
                         <AuthInput
                         className="login-username"
