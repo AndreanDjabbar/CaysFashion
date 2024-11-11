@@ -1,4 +1,4 @@
-import { LoginLayout } from "../layout/LoginLayout";
+import { AuthLayout } from "../layout/AuthLayout";
 import { AuthInput } from "../fragments/AuthInput";
 import { Button } from "../elements/Button";
 import { AuthFormLayout } from "../layout/AuthFormLayout";
@@ -10,7 +10,7 @@ import "../styles/Login.css";
 export const LoginPage = () => {
     return (
         <>
-            <LoginLayout>
+            <AuthLayout>
                 <NavLayout className="login-nav">
                     <Link
                     href="/register"
@@ -46,7 +46,7 @@ export const LoginPage = () => {
                     </div>
                 </AuthFormLayout>
                 <FooterLayout className="login-footer"></FooterLayout>
-            </LoginLayout>
+            </AuthLayout>
         </>
     )
 }

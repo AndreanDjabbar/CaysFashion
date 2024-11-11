@@ -1,4 +1,4 @@
-export const LoginLayout = (props) => {
+export const AuthLayout = (props) => {
     return (
         <div>
             {props.children}

@@ -1,6 +1,9 @@
 export const AuthFormLayout = (props) => {
     return (
-        <form className={props.className}>
+        <form 
+        className={props.className}
+        onSubmit={props.onSubmit}
+        >
             <p id="title">{props.titleForm}</p>
             {props.children}
             <div>
