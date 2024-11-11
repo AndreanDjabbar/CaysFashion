@@ -4,6 +4,7 @@ export const Input = (props) => {
         type={props.type}
         id={props.id}
         name={props.name}
-        placeholder={props.placeholder}/>
+        placeholder={props.placeholder}
+        onChange={props.onChange}/>
     )
 }

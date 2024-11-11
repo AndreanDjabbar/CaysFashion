@@ -9,7 +9,9 @@ export const AuthInput = (props) => {
             type={props.type}
             id={props.id}
             name={props.name}
-            placeholder={props.placeholder}/>
+            placeholder={props.placeholder}
+            onChange={props.onChange}/>
+            <p className="error">{props.errorMessage}</p>
         </div>
     )
 }

@@ -3,7 +3,8 @@ export const Button = (props) => {
         <button 
         className={props.className}
         onClick={props.onClick}
-        type={props.type}>
+        type={props.type}
+        disabled={props.disabled}>
             {props.children}
         </button>
     )
