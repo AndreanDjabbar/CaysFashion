@@ -27,9 +27,10 @@ func ValidateLoginRequest(userLogin requests.LoginRequest) map[string]string {
 		user, err := repositories.GetUserByUsername(userLogin.Username)
 		if err != nil {
 			errors["username"] = "User not found"
-		}
-		if valid := utils.CheckPasswordHash(userLogin.Password, user.Password); !valid {
-			errors["password"] = "Incorrect password"
+		} else {
+			if !utils.CheckPasswordHash(userLogin.Password, user.Password) {
+				errors["password"] = "Invalid password"
+			}
 		}
 	}
 	return errors
