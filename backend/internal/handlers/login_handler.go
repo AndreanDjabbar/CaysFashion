@@ -43,13 +43,16 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 
-	token, err := middlewares.GenerateJWT(user.Username)
+	customClaims := map[string]interface{}{
+		"userID":   user.UserID,
+		"username": user.Username,
+		"email":    user.Email,
+	}
+
+	token, err := middlewares.GenerateJWT(customClaims, 20)
 	if err != nil {
-		log.Error(
-			"Failed to generate token",
-			"error", err,
-		)
-		c.JSON(http.StatusInternalServerError, gin.H{"status": "error", "error": gin.H{"message": "Failed to generate token"}})
+		log.Error("Failed to generate token")
+		c.JSON(http.StatusInternalServerError, gin.H{"status": "error", "message": "Failed to generate token"})
 		return
 	}
 

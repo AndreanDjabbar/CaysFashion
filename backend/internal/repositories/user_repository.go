@@ -1,11 +1,11 @@
 package repositories
 
 import (
-	"github.com/AndreanDjabbar/CaysFashion/backend/database"
+	"github.com/AndreanDjabbar/CaysFashion/backend/database/mysql_service"
 	"github.com/AndreanDjabbar/CaysFashion/backend/internal/models/entities"
 )
 
-var db = database.GetDB()
+var db = mysql_service.GetDB()
 
 func CreateUser(user *entities.User) error {
 	if err := db.Create(user).Error; err != nil {

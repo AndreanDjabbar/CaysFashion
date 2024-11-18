@@ -1,4 +1,4 @@
-package database
+package mysql_service
 
 import (
 	"fmt"
@@ -35,7 +35,6 @@ func GetDB() *gorm.DB {
 		os.Getenv("DB_PORT"),
 		os.Getenv("DB_NAME"),
         )
-        fmt.Println(dsn)
         db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
         if err != nil {
             log.Error(

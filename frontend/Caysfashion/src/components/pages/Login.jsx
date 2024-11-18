@@ -1,11 +1,11 @@
-import { AuthLayout } from "../layout/AuthLayout";
+import { AuthLayout } from "../layouts/AuthLayout";
 import { AuthInput } from "../fragments/AuthInput";
 import { Button } from "../elements/Button";
-import { AuthFormLayout } from "../layout/AuthFormLayout";
-import { FooterLayout } from "../layout/FooterLayout";
+import { AuthFormLayout } from "../layouts/AuthFormLayout";
+import { FooterLayout } from "../layouts/FooterLayout";
 import { Link } from "../elements/Link";
-import { NavLayout } from "../layout/NavLayout";
-import "../styles/Login.css";
+import { NavLayout } from "../layouts/NavLayout";
+import "../../styles/Login.css";
 
 export const LoginPage = () => {
     return (

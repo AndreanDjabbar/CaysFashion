@@ -3,8 +3,7 @@ package config
 import (
 	"text/template"
 	"time"
-
-	"github.com/AndreanDjabbar/CaysFashion/backend/database"
+	"github.com/AndreanDjabbar/CaysFashion/backend/database/mysql_service"
 	"github.com/AndreanDjabbar/CaysFashion/backend/internal/routes"
 	"github.com/AndreanDjabbar/CaysFashion/backend/migrations"
 	"github.com/AndreanDjabbar/CaysFashion/backend/pkg/logger"
@@ -24,7 +23,7 @@ func EnvInit() {
 }
 
 func DBInit() {
-	db := database.GetDB()
+	db := mysql_service.GetDB()
 	migrations.Migrate(db)
 }
 
