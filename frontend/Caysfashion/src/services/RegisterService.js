@@ -30,9 +30,8 @@ export const RegisterService = async({
         });
 
         setErrors({});
-        
-        setTimeout(() => navigate("/login"), 2000);
-        console.log("Registration successful:", response.data);
+        const {data} = response.data;
+        setTimeout(() => navigate(`/otp-verification?randomToken=${data.randomToken}`), 2000);
     } catch (error) {
         const errorData = error.response?.data;
 
@@ -59,7 +58,6 @@ export const RegisterService = async({
             }
         } else {
             setErrorToast("Unexpected error occurred. Please try again later.");
-            console.error("Unexpected error structure:", errorData);
         }
     } finally {
         setIsSubmitting(false);
